@@ -15,6 +15,8 @@ public class moveOrb : MonoBehaviour {
 	public int laneNum=2;
 	public string controlLocked = "n";
 
+    private GameObject star;
+
    
 
 	// Use this for initialization
@@ -49,11 +51,31 @@ public class moveOrb : MonoBehaviour {
       
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag == "lethal")
+        if(other.gameObject.tag == "stars")
+        {
+            other.gameObject.SetActive(false);
+
+            if (other.gameObject.name == "Star(1)")
+            {
+                star = GameObject.Find("/Canvas/StarsContainer/Star(1)/Star");
+            }
+            else if (other.gameObject.name == "Star(2)")
+            {
+                star = GameObject.Find("/Canvas/StarsContainer/Star(2)/Star");
+            }
+            else if (other.gameObject.name == "Star(3)")
+            {
+                star = GameObject.Find("/Canvas/StarsContainer/Star(3)/Star");
+            }
+
+            star.SetActive(true);
+
+        }
+        else if (other.gameObject.tag == "lethal")
         {
             Destroy(gameObject);
             moveCamera.speed = 0;
-              
+
         }
 
     }

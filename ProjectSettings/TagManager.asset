@@ -6,6 +6,7 @@ TagManager:
   tags:
   - lethal
   - collision
+  - stars
   layers:
   - Default
   - TransparentFX
